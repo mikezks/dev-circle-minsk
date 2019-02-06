@@ -1,0 +1,49 @@
+<mat-card>
+  <mat-card-title>Dynamic Search for Flights</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="dynFilter">
+      <ng-container *ngFor="let item of formMetadata">
+        <mat-form-field>
+          <input
+            matInput
+            [formControlName]="item.name"
+            [placeholder]="item.label">
+        </mat-form-field>
+        <br>
+      </ng-container>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <button
+        mat-raised-button
+        (click)="search()"
+        [disabled]="dynFilter?.invalid"
+        color="primary">Search</button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card *ngIf="flights.length">
+    <table class="table table-contensed">
+      <tr>
+        <th>ID</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+      <tr
+        *ngFor="let f of flights"
+        [class.active]="selectedFlight === f">
+        <td>{{ f.id }}</td>
+        <td>{{ f.from }}</td>
+        <td>{{ f.to }}</td>
+        <td>{{ f.date | date:'dd.MM.yyy HH:mm' }}</td>
+        <td>
+          <a
+            (click)="select(f)"
+            style="cursor: pointer">Select</a>
+        </td>
+      </tr>
+    </table>
+  
+  </mat-card>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatButtonModule,
@@ -19,6 +19,7 @@ import {
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     LayoutModule,
     MatButtonModule,
     MatCardModule,
@@ -31,6 +32,7 @@ import {
   ],
   exports: [
     FormsModule,
+    ReactiveFormsModule,
     LayoutModule,
     MatButtonModule,
     MatCardModule,

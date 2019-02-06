@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { SharedModule } from '../shared/shared.module';
+import { FlightDynSearchComponent } from './flight-dyn-search/flight-dyn-search.component';
 
 @NgModule({
   declarations: [
-    FlightSearchComponent
+    FlightSearchComponent,
+    FlightDynSearchComponent
   ],
   imports: [
     CommonModule,
