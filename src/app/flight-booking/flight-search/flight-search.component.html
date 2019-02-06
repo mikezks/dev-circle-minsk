@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-title>Search for Flights</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="from"
+        name="from"
+        placeholder="from">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <input
+        matInput
+        [(ngModel)]="to"
+        name="to"
+        placeholder="to">
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button
+      (click)="search()"
+      [disabled]="!from || !to"
+      color="primary">Search</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card *ngIf="flights.length">
+  <table class="table table-contensed">
+    <tr>
+      <th>ID</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+    <tr
+      *ngFor="let f of flights"
+      [class.active]="selectedFlight === f">
+      <td>{{ f.id }}</td>
+      <td>{{ f.from }}</td>
+      <td>{{ f.to }}</td>
+      <td>{{ f.date | date:'dd.MM.yyy HH:mm' }}</td>
+      <td>
+        <a
+          (click)="select(f)"
+          style="cursor: pointer">Select</a>
+      </td>
+    </tr>
+  </table>
+
+</mat-card>
